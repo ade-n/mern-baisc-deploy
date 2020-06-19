@@ -4,6 +4,9 @@ const routes = require("./routes/api");
 //const cors = require("cors");
 const path = require("path");
 const morgan = require("morgan");
+require("dotenv").config();
+
+console.log(process.env);
 
 const app = express();
 const PORT = process.env.PORT || 8080;
