@@ -79,7 +79,7 @@ export class App extends Component {
     const { title, body, books } = this.state;
     return (
       <div>
-        <div>hello</div>
+        <div>List of books</div>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"

@@ -8,9 +8,6 @@ const morgan = require("morgan");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-//const MONGDB_URI =
-//  "mongodb+srv://alex_svg:Oliniedecod@test-kanlq.gcp.mongodb.net/blog?retryWrites=true&w=majority";
-
 mongoose.connect(process.env.MONGDB_URI || "mongodb://localhost/blog", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
