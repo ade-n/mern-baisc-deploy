@@ -67,8 +67,8 @@ export class App extends Component {
 
     return books.map((book) => {
       return (
-        <li key={book._id}>
-          <h3>{book.title}</h3>
+        <li className="flex" key={book._id}>
+          <h3 className="font-bold pr-2">{book.title}</h3>
           <p>{book.body}</p>
         </li>
       );
@@ -79,7 +79,7 @@ export class App extends Component {
     const { title, body, books } = this.state;
     return (
       <div>
-        <div>List of books</div>
+        <div className="text-blue-300">List of books</div>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
