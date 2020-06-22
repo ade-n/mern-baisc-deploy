@@ -13,6 +13,14 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 mongoose
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB Connected..."))
+  .catch((err) => console.log(err));
+/*
+mongoose
   .connect(
     "mongodb+srv://alex_svg:123@test-kanlq.gcp.mongodb.net/blog?retryWrites=true&w=majority",
     {
@@ -21,9 +29,9 @@ mongoose
     }
   )
   .then(() => console.log("MongoDB Connected..."))
-  .catch((err) => console.log(err));
+  .catch((err) => console.log(err));*/
 
-/*mongoose.connect(process.env.MONGDB_URI || "mongodb://localhost/blog", {
+/*mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/blog", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });*/
