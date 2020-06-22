@@ -18,19 +18,3 @@ const BookSchema = new Schema({
 
 const Book = mongoose.model("item", BookSchema);
 module.exports = Book;
-
-/*
-const Schema = mongoose.Schema;
-const BookSchema = new Schema({
-  title: String,
-  body: String,
-  date: {
-    type: String,
-    default: Date.now(),
-  },
-});
-
-//model
-const Book = mongoose.model("book", BookSchema);
-
-module.exports = Book;*/

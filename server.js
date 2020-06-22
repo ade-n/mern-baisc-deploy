@@ -4,6 +4,7 @@ const routes = require("./routes/api");
 //const cors = require("cors");
 const path = require("path");
 const morgan = require("morgan");
+const db = require("./config/keys");
 require("dotenv").config();
 
 console.log(process.env);
@@ -12,13 +13,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(
-    "mongodb+srv://alex_svg:123@test-kanlq.gcp.mongodb.net/blog?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
 
