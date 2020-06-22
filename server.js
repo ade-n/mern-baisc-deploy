@@ -9,12 +9,21 @@ require("dotenv").config();
 console.log(process.env);
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.MONGDB_URI || "mongodb://localhost/blog", {
+mongoose
+  .connect(process.env.MONGDB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB Connected..."))
+  .catch((err) => console.log(err));
+
+/*mongoose.connect(process.env.MONGDB_URI || "mongodb://localhost/blog", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+});*/
+
 mongoose.connection.on("connected", () => {
   console.log("Mongoose is connected");
 });
