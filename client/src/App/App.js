@@ -79,7 +79,7 @@ export class App extends Component {
     const { title, body, books } = this.state;
     return (
       <div>
-        <div className="text-blue-300">List of books</div>
+        <div className="text-blue-300">List of books update</div>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
