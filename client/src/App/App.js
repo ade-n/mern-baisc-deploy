@@ -1,103 +1,67 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-export class App extends Component {
+import CreateNewBook from "../components/CreateNewBook";
+import BooksListRight from "../components/BooksListRight";
+import Modal from "../components/Modal";
+import PageNotFound from "../components/Error/PageNotFound";
+
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
-      body: "",
-      books: [],
+      show: false,
     };
   }
 
-  componentDidMount = () => {
-    this.getData();
+  showModal = () => {
+    this.setState({ show: true });
   };
 
-  getData = () => {
-    axios
-      .get("/api")
-      .then((res) => {
-        this.setState({ books: res.data });
-        console.log("all the data", res);
-      })
-      .catch((err) => {
-        console.log("there is an error", err);
-      });
-  };
-
-  handleTitle = (e) => {
-    this.setState({ title: e.target.value });
-  };
-
-  handleBody = (e) => {
-    this.setState({ body: e.target.value });
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-
-    const array = {
-      title: this.state.title,
-      body: this.state.body,
-    };
-
-    axios
-      .post("/api/add", array)
-      .then((res) => {
-        console.log("show me za data", res.data);
-        this.resetUserInput();
-        this.getData();
-      })
-      .catch((err) => {
-        console.log("ooo an error", err);
-      });
-  };
-
-  resetUserInput = () => {
-    this.setState({
-      title: "",
-      body: "",
-    });
-  };
-
-  displayBooks = (books) => {
-    if (!books.length) return null;
-
-    return books.map((book) => {
-      return (
-        <li className="flex" key={book._id}>
-          <h3 className="font-bold pr-2">{book.title}</h3>
-          <p>{book.body}</p>
-        </li>
-      );
-    });
+  hideModal = () => {
+    this.setState({ show: false });
+    window.location = "/";
   };
 
   render() {
-    const { title, body, books } = this.state;
     return (
-      <div>
-        <div className="text-blue-300">List of books update</div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="title"
-            value={title}
-            onChange={this.handleTitle}
-            placeholder="title"
+      <Router>
+        <div className="md:flex md:justify-between w-full ">
+          <div
+            style={{
+              backgroundColor: "#f3c623",
+            }}
+            className="md:px-6 px-12 mx-auto  md:h-screen md:w-1/4 w-full"
+          >
+            <CreateNewBook />
+          </div>
+          <div
+            style={{
+              borderRadius: "100px 0px 0px 0px",
+              backgroundColor: "#f4f6ff",
+            }}
+            className="md:w-3/4 w-full h-screen"
+          >
+            <BooksListRight showModal={this.showModal} />
+          </div>
+        </div>
+
+        <Switch>
+          <Route exact path="/" />
+          <Route
+            path="/edit/:id"
+            render={(props) => (
+              <Modal
+                {...props}
+                handleClose={this.hideModal}
+                show={this.state.show}
+              />
+            )}
           />
-          <textarea
-            type="text"
-            placeholder="body"
-            value={body}
-            onChange={this.handleBody}
-          />
-          <button type="submit">Submit</button>
-        </form>
-        <ul>{this.displayBooks(books)}</ul>
-      </div>
+          <Route component={PageNotFound} />
+        </Switch>
+      </Router>
     );
   }
 }

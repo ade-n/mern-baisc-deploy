@@ -1,6 +1,25 @@
 const mongoose = require("mongoose");
-//Schema
+const Schema = mongoose.Schema;
 
+const BookSchema = new Schema({
+  book: {
+    type: String,
+    required: [true, "Book field is required"],
+  },
+  author: {
+    type: String,
+    required: [true, "Author field is required"],
+  },
+  link: {
+    type: String,
+  },
+  show: { type: Boolean, default: false },
+});
+
+const Book = mongoose.model("item", BookSchema);
+module.exports = Book;
+
+/*
 const Schema = mongoose.Schema;
 const BookSchema = new Schema({
   title: String,
@@ -12,6 +31,6 @@ const BookSchema = new Schema({
 });
 
 //model
-const Book = mongoose.model("books", BookSchema);
+const Book = mongoose.model("book", BookSchema);
 
-module.exports = Book;
+module.exports = Book;*/
