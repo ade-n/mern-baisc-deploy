@@ -4,7 +4,6 @@ const routes = require("./routes/api");
 //const cors = require("cors");
 const path = require("path");
 const morgan = require("morgan");
-//const db = require("./config/keys").MONGDB_URI;
 require("dotenv").config();
 
 console.log(process.env);
@@ -19,22 +18,6 @@ mongoose
   })
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
-/*
-mongoose
-  .connect(
-    "mongodb+srv://alex_svg:123@test-kanlq.gcp.mongodb.net/blog?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
-  .then(() => console.log("MongoDB Connected..."))
-  .catch((err) => console.log(err));*/
-
-/*mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/blog", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});*/
 
 mongoose.connection.on("connected", () => {
   console.log("Mongoose is connected");

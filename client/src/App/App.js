@@ -1,11 +1,15 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 
 import CreateNewBook from "../components/CreateNewBook";
 import BooksListRight from "../components/BooksListRight";
 import Modal from "../components/Modal";
-import PageNotFound from "../components/Error/PageNotFound";
 
 class App extends React.Component {
   constructor(props) {
@@ -59,7 +63,7 @@ class App extends React.Component {
               />
             )}
           />
-          <Route component={PageNotFound} />
+          <Redirect to="/" />
         </Switch>
       </Router>
     );

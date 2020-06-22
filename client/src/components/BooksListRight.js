@@ -58,7 +58,7 @@ export class BooksListRight extends Component {
     const booksNo = books.length;
 
     return (
-      <div className="px-24">
+      <div className="md:px-24 px-6">
         <div
           style={{ color: "#f3c623" }}
           className="font-bold pt-16 text-white text-5xl "
@@ -83,6 +83,9 @@ export class BooksListRight extends Component {
             deleteBook={this.handleDelete}
           />
         </table>
+        <div className="text-red-400 pt-6">
+          {books.length >= 6 ? "You have reached your limit" : null}
+        </div>
       </div>
     );
   }

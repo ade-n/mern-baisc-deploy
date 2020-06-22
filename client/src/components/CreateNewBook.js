@@ -76,7 +76,7 @@ export class CreateNewBook extends Component {
 
           <InputField
             htmlFor="book"
-            placeholder="The Last Wish"
+            placeholder="The Witcher - max.24 characters"
             onChange={this.onChangeBook}
             value={book}
             label="Book"
@@ -84,7 +84,7 @@ export class CreateNewBook extends Component {
 
           <InputField
             htmlFor="author"
-            placeholder="Andrzej Sapkowski"
+            placeholder="A. Sapkowski - max.24 characters"
             onChange={this.onChangeAuthor}
             value={author}
             label="Author"

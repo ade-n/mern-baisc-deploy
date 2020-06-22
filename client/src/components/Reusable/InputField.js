@@ -11,7 +11,7 @@ const InputField = ({ placeholder, onChange, value, htmlFor, label }) => {
       </label>
       <input
         id="placeholderColor"
-        className="appearance-none bg-transparent border w-full text-md text-gray-800 mr-3 py-2 px-4  leading-tight focus:outline-none  mb-6 hover:bg-gray-200"
+        className="appearance-none bg-transparent border w-full text-sm text-gray-800 mr-3 py-2 px-4  leading-tight focus:outline-none  mb-6 hover:bg-gray-200"
         type="text"
         placeholder={placeholder}
         onChange={onChange}
