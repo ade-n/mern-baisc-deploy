@@ -4,7 +4,7 @@ const routes = require("./routes/api");
 //const cors = require("cors");
 const path = require("path");
 const morgan = require("morgan");
-const db = require("./config/keys");
+const MONGDB_URI = require("./config/keys");
 require("dotenv").config();
 
 console.log(process.env);
